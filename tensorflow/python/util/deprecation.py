@@ -60,7 +60,7 @@ def _validate_deprecation_args(date, instructions):
 def _call_location():
   """Returns call location given level up from current call."""
   frame = inspect.currentframe()
-  if frame:
+  if frame.f_back.f_back:
     # CPython internals are available, use them for performance.
     # walk back two frames to get to deprecated function caller.
     frame = frame.f_back
